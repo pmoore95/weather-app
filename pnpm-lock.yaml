@@ -20,6 +20,9 @@ dependencies:
   axios:
     specifier: ^1.6.8
     version: 1.6.8
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   install:
     specifier: ^0.13.0
     version: 0.13.0

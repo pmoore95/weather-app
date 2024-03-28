@@ -118,7 +118,17 @@ export const TestContainer: React.FC = () => {
 
             <div>
                 {weatherQuery.isLoading && <div>Loading weather...</div>}
-                {weatherQuery.data && <div>{weatherQuery.data.message}</div>}
+                {weatherQuery.data && <div>
+                    {weatherQuery.data.dailyForecast.map(dailyForecast => {
+                    return (
+                        <div key={dailyForecast.date}>
+                            <div>{dailyForecast.date}</div>
+                            <div>{dailyForecast.max}</div>
+                            <div>{dailyForecast.min}</div>
+                        </div>
+                    )
+                })}
+                </div>}
             </div>
         </div>
     );
