@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// import radixThemePlugin from "radix-ui-themes-with-tailwind";
 
 const config: Config = {
   content: [
@@ -15,6 +16,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // radixThemePlugin({
+    //   useTailwindColorNames: true, // optional
+    //   useTailwindRadiusNames: true, // optional
+    //   mapMissingTailwindColors: true, // optional
+    // })
+  ],
 };
 export default config;
