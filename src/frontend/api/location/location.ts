@@ -1,8 +1,8 @@
-import { Place } from "../../../pages/api/v1/location/models";
+import { Place, PlaceLite } from "../../../pages/api/v1/location/models";
 import { apiClient } from "../apiClient"
 
-export const getLocation = (q: string) => {
-    return apiClient.get<Place[]>('/location', {
+export const getLocationsBySearchString = (q: string) => {
+    return apiClient.get<PlaceLite[]>('/location', {
         params: {
             q
         }
@@ -10,7 +10,7 @@ export const getLocation = (q: string) => {
 }
 
 export const getLocationByLatLon = (lat: number, lon: number) => {
-    return apiClient.get<Place>('/location', {
+    return apiClient.get<Place>('/location/reverse', {
         params: {
             lat,
             lon,

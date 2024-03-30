@@ -2,7 +2,7 @@ import { TemperatureUnit } from "@/types";
 
 type OpenMeteoTemperatureUnit = '°C' | '°F';
 
-export type rawOpenMeteoResponse = {
+export type RawOpenMeteoResponse = {
     latitude: number;
     longitude: number;
     timezone: string;
@@ -19,15 +19,3 @@ export type rawOpenMeteoResponse = {
     }
 }
 
-export type DailyForecast = {
-    max: number;
-    min: number;
-    date: string;
-}
-
-export type ForecastResponse = {
-    unit: TemperatureUnit,
-    lat: number;
-    lon: number;
-    dailyForecast: DailyForecast[];
-}
