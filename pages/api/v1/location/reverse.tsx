@@ -1,6 +1,7 @@
+import { DEFAULT_ERROR_MESSAGES, ERROR_MESSAGES } from "@/backend/constants/error-messages";
 import { getLocationByLatLon } from "@/backend/services/location/location.service";
 import { RestMethod } from "@/backend/types";
-import { controllerDefaultErrorHandler, controllerDefaultResponseHandler, handleInvalidRestMethod, sendInternalServerErrorResponse } from "@/backend/utils";
+import { controllerDefaultErrorHandler, handleInvalidRestMethod, sendInternalServerErrorResponse } from "@/backend/utils";
 import { AxiosError, HttpStatusCode } from "axios";
 import Joi from "joi";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -23,5 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const location = await getLocationByLatLon(lat, lon).catch((error: AxiosError)=>controllerDefaultErrorHandler(error, res));
     
     if(!location) sendInternalServerErrorResponse(res);
+    else if('error' in location.data) res.status(HttpStatusCode.BadRequest).json({message: DEFAULT_ERROR_MESSAGES[HttpStatusCode.BadRequest]})
     else res.status(location.status).json(location.data)
 }

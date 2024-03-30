@@ -1,6 +1,6 @@
 import { getLocationsBySearch } from '@/backend/services/location/location.service';
 import { RestMethod } from '@/backend/types';
-import { controllerDefaultErrorHandler, defaultErrorHandler, handleInvalidRestMethod } from '@/backend/utils';
+import { controllerDefaultErrorHandler, defaultErrorHandler, handleInvalidRestMethod, sendInternalServerErrorResponse } from '@/backend/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Joi from 'joi';
 import { AxiosError, HttpStatusCode } from 'axios';
@@ -21,5 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const locations = await getLocationsBySearch(value.q).catch((error: AxiosError)=>controllerDefaultErrorHandler(error, res))
 
-    res.status(HttpStatusCode.Ok).json(locations);
+    if(!locations) sendInternalServerErrorResponse(res);
+    else res.status(locations.status).json(locations.data);
 }
