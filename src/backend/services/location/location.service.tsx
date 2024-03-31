@@ -15,7 +15,6 @@ axiosRetry(apiClient, {
   retries: 4,
   retryDelay: axiosRetry.exponentialDelay,
   retryCondition: (error) => {
-    console.log("retrying!");
     switch (error.response?.status) {
       case HttpStatusCode.InternalServerError:
       case HttpStatusCode.Unauthorized: /* This isn't an issue if API Key is provided */
