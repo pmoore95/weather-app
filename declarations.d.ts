@@ -1,1 +1,1 @@
-declare module 'radix-ui-themes-with-tailwind';
+declare module "radix-ui-themes-with-tailwind";

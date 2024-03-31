@@ -1,15 +1,15 @@
-import { AppProps } from 'next/app';
+import { AppProps } from "next/app";
 import "@/app/globals.css";
-import "weather-icons/css/weather-icons.min.css";
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const MyApp = ({ Component, pageProps }: AppProps) => {
-    const queryClient = new QueryClient();
+  const queryClient = new QueryClient();
 
-    return <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
     </QueryClientProvider>
-
-}
+  );
+};
 
 export default MyApp;
