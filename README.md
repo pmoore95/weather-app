@@ -5,8 +5,8 @@
 To run:
 
 1. add the GEO_CODE_API_KEY to `.env.local` provided separately.
-2. run ```bash pnpm i```
-3. run ```bash pnpm dev```
+2. run `pnpm i`
+3. run `pnpm dev`
 
 Please reach out if you have any issues running it: philip.moore95@outlook.com
 
