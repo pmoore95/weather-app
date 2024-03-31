@@ -1,7 +1,5 @@
 ## Next.js Weather Forecast/History Fullstack App
 
-## Getting Started
-
 To run:
 
 1. add the GEO_CODE_API_KEY to `.env.local` provided separately.
